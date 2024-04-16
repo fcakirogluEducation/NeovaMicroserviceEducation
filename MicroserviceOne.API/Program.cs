@@ -9,13 +9,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddMassTransit(x =>
-{
-    x.UsingRabbitMq((context, cfg) =>
-    {
-        cfg.Host(new Uri(builder.Configuration.GetConnectionString("RabbitMq")!));
-    });
-});
+builder.Services.AddMassTransit(x => { x.UsingRabbitMq((context, cfg) => { cfg.Host("localhost", "/"); }); });
 
 
 var app = builder.Build();

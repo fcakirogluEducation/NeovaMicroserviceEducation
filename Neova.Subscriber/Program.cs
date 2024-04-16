@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using System.ComponentModel.Design;
 using System.Text;
 using System.Text.Json;
 using Neova.Subscriber;
@@ -36,6 +37,14 @@ var consumer = new EventingBasicConsumer(channel);
 
 consumer.Received += (sender, eventArgs) =>
 {
+    // if( !dbContext.inbox.any(x=>x.id==event.id))
+    {
+    }
+    //else
+    {
+        channel.BasicNack(eventArgs.DeliveryTag, false, false);
+        channel.BasicAck(eventArgs.DeliveryTag, false);
+    }
     Thread.Sleep(1000);
     var body = eventArgs.Body.ToArray();
     var message = Encoding.UTF8.GetString(body);
