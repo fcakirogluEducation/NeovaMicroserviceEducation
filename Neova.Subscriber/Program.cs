@@ -18,11 +18,21 @@ using var channel = connection.CreateModel();
 
 //prefetch count
 
-channel.BasicQos(0, 10, true);
+channel.BasicQos(0, 50, true);
+
+
+// create queue
+channel.QueueDeclare("queue-with-demo-direct-exchange", true, false, false, null);
+//channel.QueueDeclare("queue2-with-demo-fanout-exchange", true, false, false, null);
+//channel.QueueDeclare("queue3-with-demo-fanout-exchange", true, false, false, null);
+// bind exchange
+channel.QueueBind("queue-with-demo-direct-exchange", "demo-direct-exchange", "route-key-b");
+//channel.QueueBind("queue2-with-demo-fanout-exchange", "demo-fanout-exchange", string.Empty);
+//channel.QueueBind("queue3-with-demo-fanout-exchange", "demo-fanout-exchange", string.Empty);
+
 
 var consumer = new EventingBasicConsumer(channel);
 
-// event => delegate => method
 
 consumer.Received += (sender, eventArgs) =>
 {
@@ -41,7 +51,8 @@ consumer.Received += (sender, eventArgs) =>
     }
 };
 
+// event => delegate => method
+channel.BasicConsume("queue-with-demo-direct-exchange", false, consumer);
 
-channel.BasicConsume("demo-queue", false, consumer);
 
 Console.ReadLine();

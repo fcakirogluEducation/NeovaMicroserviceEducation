@@ -4,6 +4,7 @@ using System.Text;
 using System.Text.Json;
 using Neova.Publisher;
 using RabbitMQ.Client;
+using RabbitMQ.Client.Events;
 
 Console.WriteLine("Publisher");
 
@@ -15,7 +16,15 @@ var connection = connectionFactory.CreateConnection();
 
 using var channel = connection.CreateModel();
 
-channel.QueueDeclare("demo-queue", durable: true, exclusive: false, autoDelete: false, arguments: null);
+
+channel.BasicReturn += (object? sender, BasicReturnEventArgs e) =>
+{
+    Console.WriteLine($"Mesaj gitmedi : {e.BasicProperties.MessageId}");
+};
+
+
+channel.ExchangeDeclare("demo-direct-exchange", ExchangeType.Direct, true, false, null);
+
 channel.ConfirmSelect();
 
 
@@ -34,8 +43,8 @@ Enumerable.Range(1, 50).ToList().ForEach(x =>
 
     try
     {
-        channel.BasicPublish("", "demo-queue", null, userCreatedEventAsBinary);
-
+        channel.BasicPublish("demo-direct-exchange", "route-key-a", true, null, userCreatedEventAsBinary);
+        Console.WriteLine("Message sent: ");
         channel.WaitForConfirms(TimeSpan.FromSeconds(10));
     }
     catch (Exception e)
@@ -43,7 +52,4 @@ Enumerable.Range(1, 50).ToList().ForEach(x =>
         Console.WriteLine(e);
         throw;
     }
-
-
-    Console.WriteLine("Message sent: ");
 });

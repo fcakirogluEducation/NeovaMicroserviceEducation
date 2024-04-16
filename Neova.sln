@@ -3,9 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neova.Publisher", "Neova.Publisher\Neova.Publisher.csproj", "{7AEBDBCB-C5A3-4E3E-A557-79010D8B0908}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Neova.Publisher", "Neova.Publisher\Neova.Publisher.csproj", "{7AEBDBCB-C5A3-4E3E-A557-79010D8B0908}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neova.Subscriber", "Neova.Subscriber\Neova.Subscriber.csproj", "{5E69F5B6-3D25-4AA0-911A-C5BD54B33AAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Neova.Subscriber", "Neova.Subscriber\Neova.Subscriber.csproj", "{5E69F5B6-3D25-4AA0-911A-C5BD54B33AAF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroserviceOne.API", "MicroserviceOne.API\MicroserviceOne.API.csproj", "{6E3DF802-0B9B-4C4C-8F6B-50C522E0B1E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroserviceTwo.API", "MicroserviceTwo.API\MicroserviceTwo.API.csproj", "{51E05F74-0575-4A69-8343-7D1709D076C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Events", "Shared.Events\Shared.Events.csproj", "{D15AB24B-7F88-4A17-BA98-77CC2114D64F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +27,18 @@ Global
 		{5E69F5B6-3D25-4AA0-911A-C5BD54B33AAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E69F5B6-3D25-4AA0-911A-C5BD54B33AAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E69F5B6-3D25-4AA0-911A-C5BD54B33AAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E3DF802-0B9B-4C4C-8F6B-50C522E0B1E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E3DF802-0B9B-4C4C-8F6B-50C522E0B1E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E3DF802-0B9B-4C4C-8F6B-50C522E0B1E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E3DF802-0B9B-4C4C-8F6B-50C522E0B1E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51E05F74-0575-4A69-8343-7D1709D076C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51E05F74-0575-4A69-8343-7D1709D076C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51E05F74-0575-4A69-8343-7D1709D076C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51E05F74-0575-4A69-8343-7D1709D076C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D15AB24B-7F88-4A17-BA98-77CC2114D64F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D15AB24B-7F88-4A17-BA98-77CC2114D64F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D15AB24B-7F88-4A17-BA98-77CC2114D64F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D15AB24B-7F88-4A17-BA98-77CC2114D64F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
