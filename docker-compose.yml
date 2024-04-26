@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  neovamicroserviceorder.api:
+    image: neovamicroserviceorderapi-image:${version}
+    build:
+      context: .
+      dockerfile: NeovaMicroserviceOrder.API/Dockerfile
+  neovamicroservicestock.api:
+    image: neovamicroservicestockapi-image:${version}
+    build:
+      context: .
+      dockerfile: NeovaMicroserviceStock.API/Dockerfile
+  sql_db:
+   image: mcr.microsoft.com/mssql/server:2022-preview-ubuntu-22.04 
+volumes:
+  sql_data:

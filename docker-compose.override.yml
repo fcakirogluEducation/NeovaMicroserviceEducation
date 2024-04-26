@@ -1,0 +1,26 @@
+version: '3.4'
+
+services:
+  neovamicroserviceorder.api:
+   environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_HTTP_PORTS=8080  
+   ports:
+   - 5000:8080
+  neovamicroservicestock.api:
+   environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_HTTP_PORTS=8080 
+   ports:
+   - 5020:8080
+  sql_db:
+   user: root
+   environment:
+    - ACCEPT_EULA=Y
+    - MSSQL_SA_PASSWORD=Password12*
+   ports:
+    - 1433:1433
+   volumes:
+   - sql_data:/var/opt/mssql/data
+
+
